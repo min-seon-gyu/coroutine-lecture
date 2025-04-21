@@ -12,3 +12,14 @@ fun main() = runBlocking {
     }
     Thread.sleep(1000)
 }
+
+
+fun aa() {
+    CoroutineScope(Dispatchers.Default).launch {
+        val currentJob = this.coroutineContext[Job]
+        val newJob = Job(currentJob)
+        launch(newJob) {
+            delay(1000)
+        }
+    }
+}
